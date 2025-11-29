@@ -48,13 +48,14 @@ impl std::io::Write for Writer {
         Ok(())
     }
 }
-
+#[derive(Clone)]
 pub struct InitLoggingOptions<'a> {
     pub default_rust_log_value: Option<&'a str>,
     pub log_file: Option<&'a str>,
     pub log_file_rust_log: Option<&'a str>,
 }
 
+#[derive(Clone)]
 pub struct InitLoggingResult {
     pub rust_log_reload_tx: tokio::sync::mpsc::UnboundedSender<String>,
     pub line_broadcast: LineBroadcast,
